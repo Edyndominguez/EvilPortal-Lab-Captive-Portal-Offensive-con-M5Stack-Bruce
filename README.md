@@ -31,7 +31,7 @@ El dato más destacado del proyecto: **más de 100 credenciales capturadas** a l
 | Protocolo HTTP | GET (query string), sin method declarado en form |
 | Campos capturados | `email` + `password` |
 | Rango de operación | 15–30 metros en espacios abiertos |
-| Duración total | Junio 2024 – Marzo 2026 (1.5 años) |
+| Duración total | Julio 2024 – Marzo 2026 (1.5 años) |
 | Deauth | Desactivado (modo pasivo) |
 
 La decisión de operar 100% en hardware local fue deliberada: el M5Stack con Bruce permite despliegues instantáneos sin dependencia de red externa, con visibilidad en tiempo real de víctimas conectadas y credenciales capturadas directamente en la pantalla del dispositivo. El modo Deauth se mantuvo desactivado en todos los experimentos para reducir la huella del ataque y mantener el entorno dentro de los límites del laboratorio controlado.
@@ -201,30 +201,6 @@ El hallazgo más relevante del proyecto no fue técnico sino conductual: la pres
 
 ---
 
-## 📁 Estructura del Repositorio
-
-```
-EvilPortal-Lab/
-│
-├── portals/                          # Portales HTML listos para cargar en Bruce
-│   ├── wifi-itse_login-PRO.html      # Portal clone institucional ITSE
-│   ├── wifi-NODO-1PRO.html           # Portal ficticio NODO-WIFI (conferencia)
-│   └── google-signin-phish.html      # Portal phishing Google Sign In
-│
-├── screenshots/                      # Evidencia visual del laboratorio
-│   ├── m5stack_evil_portal_creds.png # M5Stack mostrando credenciales capturadas
-│   ├── wifi_list_victim_android.png  # Lista de redes en teléfono víctima
-│   ├── captive_portal_google_phish.png # Captive portal disparado en Android
-│   ├── google_phish_credentials_filled.png # Portal Google con credenciales
-│   └── nodo_wifi_portal_preview.png  # Preview del portal NODO-WIFI
-│
-├── assets/
-│   └── NODO.png                      # Imagen de referencia del diseño NODO-WIFI
-│
-└── README.md                         # Este archivo
-```
-
----
 
 ## ⚖️ Aviso Ético y Legal
 
