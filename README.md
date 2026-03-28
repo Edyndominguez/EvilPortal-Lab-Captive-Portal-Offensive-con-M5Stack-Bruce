@@ -2,7 +2,6 @@
 
 ![Plataforma](https://img.shields.io/badge/Plataforma-M5Stack%20Bruce-blue?style=flat-square)
 ![Entorno](https://img.shields.io/badge/Entorno-100%25%20F%C3%ADsico%20Local-orange?style=flat-square)
-![Duración](https://img.shields.io/badge/Duraci%C3%B3n-1.5%20a%C3%B1os-green?style=flat-square)
 ![Estado](https://img.shields.io/badge/Estado-Completado-brightgreen?style=flat-square)
 ![Categoría](https://img.shields.io/badge/Categor%C3%ADa-Red%20Team%20%7C%20WiFi%20Phishing-red?style=flat-square)
 
@@ -33,7 +32,6 @@ El dato más destacado del proyecto: **más de 100 credenciales capturadas** a l
 | Campos capturados | `email` + `password` |
 | Rango de operación | 15–30 metros en espacios abiertos |
 | Duración total | Junio 2024 – Marzo 2026 (1.5 años) |
-| Costo de infraestructura | $0 (hardware preexistente) |
 | Deauth | Desactivado (modo pasivo) |
 
 La decisión de operar 100% en hardware local fue deliberada: el M5Stack con Bruce permite despliegues instantáneos sin dependencia de red externa, con visibilidad en tiempo real de víctimas conectadas y credenciales capturadas directamente en la pantalla del dispositivo. El modo Deauth se mantuvo desactivado en todos los experimentos para reducir la huella del ataque y mantener el entorno dentro de los límites del laboratorio controlado.
@@ -44,7 +42,7 @@ La decisión de operar 100% en hardware local fue deliberada: el M5Stack con Bru
 
 El objetivo general fue construir experiencia práctica real en técnicas de ingeniería social asistida por hardware, específicamente en el vector WiFi phishing, comprendiendo no solo la implementación técnica sino también los factores humanos que determinan el éxito o fracaso de un ataque de este tipo.
 
-Como objetivos específicos, el proyecto buscó dominar el ciclo completo de un Evil Portal —desde el diseño del HTML hasta la captura y visualización de credenciales—, identificar las limitaciones y reglas técnicas del firmware Bruce para portales HTML válidos, comparar la tasa de efectividad entre diferentes tipos de portales (institucional vs. genérico vs. marca conocida), documentar el comportamiento del captive portal en distintos sistemas operativos móviles, y construir plantillas reutilizables que sirvan como base para futuros laboratorios de concienciación en seguridad.
+Como objetivos específicos, el proyecto buscó dominar el ciclo completo de un Evil Portal desde el diseño del HTML hasta la captura y visualización de credenciales, identificar las limitaciones y reglas técnicas del firmware Bruce para portales HTML válidos, comparar la tasa de efectividad entre diferentes tipos de portales (institucional vs. genérico vs. marca conocida), documentar el comportamiento del captive portal en distintos sistemas operativos móviles, y construir plantillas reutilizables que sirvan como base para futuros laboratorios de concienciación en seguridad.
 
 ---
 
@@ -52,13 +50,13 @@ Como objetivos específicos, el proyecto buscó dominar el ciclo completo de un 
 
 | Componente | Función en el laboratorio |
 |---|---|
-| M5Stack (ESP32) | Hardware principal — AP WiFi + servidor HTTP |
-| Bruce Firmware | OS ofensivo — gestión de Evil Portal, captura en `/creds` |
-| HTML5 / CSS3 / JS vanilla | Diseño de portales cautivos sin dependencias externas |
+| M5Stack (ESP32) | Hardware principal  AP WiFi + servidor HTTP |
+| Bruce Firmware | OS ofensivo  gestión de Evil Portal, captura en `/creds` |
+| HTML  | Diseño de portales cautivos sin dependencias externas |
 | Portal ITSE clone | Suplantación de red institucional universitaria |
 | Portal NODO-WIFI ficticio | Red genérica de conferencia para pruebas controladas |
 | Portal Google phishing | Suplantación de página de Sign In de Google vía `www.googleapis.cn` |
-| Android (víctima) | Cliente de prueba — comportamiento de captive portal en Android |
+| Android (víctima) | Cliente de prueba  comportamiento de captive portal en Android |
 | `172.0.0.1/creds` | Endpoint de visualización de credenciales capturadas en Bruce |
 | Pantalla TFT M5Stack | Monitoreo en tiempo real: víctimas conectadas, email, password |
 
@@ -70,14 +68,14 @@ Como objetivos específicos, el proyecto buscó dominar el ciclo completo de un 
 |---|---|
 | Total de credenciales capturadas | +100 pares email/password |
 | Campañas ejecutadas | 3 (ITSE, NODO-WIFI, Google) |
-| Tasa de interacción promedio (redes conocidas) | ~62% |
-| Tasa de interacción (redes genéricas) | ~38% |
-| Tiempo promedio hasta primera víctima | < 90 segundos tras despliegue |
+| Tasa de interacción promedio (redes conocidas) | 62% |
+| Tasa de interacción (redes genéricas) | 38% |
+| Tiempo promedio hasta primera víctima | < 300 segundos tras despliegue |
 | Portal más efectivo | ITSE clone (red institucional conocida) |
 | Sistema operativo más susceptible | Android (captive portal automático) |
-| Credenciales capturadas en sesión más activa | 8 en < 20 minutos |
+| Credenciales capturadas en sesión más activa | 6 en < 20 minutos |
 | Rango WiFi efectivo promedio | 20 metros en pasillos cerrados |
-| Duración total del proyecto | ~18 meses |
+| Duración total del proyecto | 18 meses |
 
 ---
 
@@ -101,7 +99,7 @@ Las capturas documentan el flujo completo del ataque: desde la pantalla del disp
 
 ### Campaña 1 — ITSE Institucional Clone
 
-El portal `wifi-itse_login.html` suplanta la página de autenticación de la red WiFi institucional del ITSE (Instituto Tecnológico Superior de Estudio). El AP se configuró con el nombre `Conferencia ITSE 2026` para aprovechar el reconocimiento de marca entre el alumnado. El portal presenta colores institucionales (amarillo `#F5A800`), logo textual "ITSE" y un formulario que solicita correo institucional y contraseña.
+El portal `wifi-itse_login.html` suplanta la página de autenticación de la red WiFi institucional del ITSE. El AP se configuró con el nombre `Conferencia ITSE 2026` para aprovechar el reconocimiento de marca entre el alumnado. El portal presenta colores institucionales (amarillo `#F5A800`), logo textual "ITSE" y un formulario que solicita correo institucional y contraseña.
 
 ```
 AP Name    : Conferencia ITSE 2026
