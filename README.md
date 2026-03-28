@@ -134,7 +134,7 @@ Resultado  : Validación técnica del formato Bruce — funcional al 100%
 
 ### Campaña 3 — Google Sign In Phishing
 
-El portal más agresivo en términos de reconocimiento de marca: una réplica visual de la página de inicio de sesión de Google. El captive portal de Android dispara automáticamente el navegador apuntando a `www.googleapis.cn` —dominio que Bruce intercepta y sirve el HTML local— haciendo que la víctima vea una pantalla de "Sign in with Google" aparentemente legítima. Esta campaña registró el mayor tiempo promedio de llenado de formulario (usuarios que ingresan credenciales reales de Google pensando que es un paso requerido para conectarse).
+El portal más agresivo en términos de reconocimiento de marca: una réplica visual de la página de inicio de sesión de Google. El captive portal de Android dispara automáticamente el navegador apuntando a `www.googleapis.cn` dominio que Bruce intercepta y sirve el HTML local haciendo que la víctima vea una pantalla de "Sign in with Google" aparentemente legítima. Esta campaña registró el mayor tiempo promedio de llenado de formulario (usuarios que ingresan credenciales reales de Google pensando que es un paso requerido para conectarse).
 
 ```
 AP Name    : Digital
@@ -183,23 +183,7 @@ Indicador de compromiso (IoC):
 
 El hallazgo más relevante del proyecto no fue técnico sino conductual: la presencia de un nombre de red conocido (`Conferencia ITSE 2026`, `Digital`) fue el factor determinante en la tasa de conversión, superando en importancia al diseño visual del portal. Usuarios que reconocieron el nombre de la red no inspeccionaron la URL ni el certificado antes de ingresar credenciales. Esto valida empíricamente que el vector de ataque más efectivo en Evil Portal no es el phishing visual sino el **social engineering implícito del SSID**.
 
----
 
-## ⏱️ Cronología del Proyecto
-
-| Fecha | Evento |
-|---|---|
-| Enero 2023 | Adquisición del M5Stack y primera instalación de Bruce firmware |
-| Febrero 2023 | Primeras pruebas con portales de ejemplo incluidos en Bruce |
-| Abril 2023 | Desarrollo del portal NODO-WIFI ficticio — validación técnica del formato |
-| Junio 2023 | Identificación de las 4 reglas críticas de Bruce (action, method, campos, JS pattern) |
-| Agosto 2023 | Despliegue de Campaña 1 — ITSE clone, primeras 20 credenciales capturadas |
-| Octubre 2023 | Campaña 2 — NODO-WIFI en evento de conferencia universitaria |
-| Diciembre 2023 | Superados los 50 pares de credenciales acumulados |
-| Febrero 2024 | Desarrollo del portal Google phishing — Campaña 3 |
-| Abril 2024 | Campaña 3 activa — primer uso del AP "Digital" con Google clone |
-| Mayo 2024 | Superados los 100 pares de credenciales capturadas |
-| Junio 2024 | Cierre del laboratorio y documentación final del repositorio |
 
 ---
 
