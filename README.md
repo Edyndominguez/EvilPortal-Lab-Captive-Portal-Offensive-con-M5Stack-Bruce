@@ -81,7 +81,7 @@ Como objetivos específicos, el proyecto buscó dominar el ciclo completo de un 
 
 ## 🖼️ Sección Visual
 
-Las capturas documentan el flujo completo del ataque: desde la pantalla del dispositivo M5Stack con las credenciales capturadas en tiempo real, hasta la perspectiva de la víctima en su teléfono —el listado de redes disponibles con el AP malicioso visible, el captive portal automático disparado por Android, y la página de phishing renderizada.
+Las capturas documentan el flujo completo del ataque: desde la pantalla del dispositivo M5Stack con las credenciales capturadas en tiempo real, hasta la perspectiva de la víctima en su teléfono el listado de redes disponibles con el AP malicioso visible, el captive portal automático disparado por Android, y la página de phishing renderizada.
 
 > ![M5Stack Bruce - Evil Portal activo con credenciales capturadas](screenshots/m5stack_evil_portal_creds.png)
 
