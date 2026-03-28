@@ -3,7 +3,6 @@
 ![Plataforma](https://img.shields.io/badge/Plataforma-M5Stack%20Bruce-blue?style=flat-square)
 ![Entorno](https://img.shields.io/badge/Entorno-100%25%20F%C3%ADsico%20Local-orange?style=flat-square)
 ![Duración](https://img.shields.io/badge/Duraci%C3%B3n-1.5%20a%C3%B1os-green?style=flat-square)
-![Costo](https://img.shields.io/badge/Costo-%240%20cloud-lightgrey?style=flat-square)
 ![Estado](https://img.shields.io/badge/Estado-Completado-brightgreen?style=flat-square)
 ![Categoría](https://img.shields.io/badge/Categor%C3%ADa-Red%20Team%20%7C%20WiFi%20Phishing-red?style=flat-square)
 
@@ -15,7 +14,7 @@
 
 EvilPortal-Lab es un proyecto de investigación ofensiva centrado en el vector de ataque conocido como **Evil Portal** o **Captive Portal Attack**: una técnica donde un dispositivo actúa como punto de acceso WiFi abierto y, al conectarse una víctima, le sirve una página de login falsa que captura sus credenciales antes de redirigirla.
 
-El proyecto integra tres tecnologías principales: el hardware **M5Stack** (microcontrolador compacto con pantalla TFT y radio WiFi), el firmware **Bruce** (sistema operativo ofensivo para hardware ESP32 con soporte nativo de Evil Portal, Deauth y captura de credenciales en `/creds`), y portales HTML personalizados diseñados para suplantar redes reales. Los portales fueron desplegados en entornos físicos reales —pasillos universitarios, eventos académicos y laboratorios de cómputo— sin infraestructura cloud de ningún tipo.
+El proyecto integra tres tecnologías principales: el hardware **M5Stack** (microcontrolador compacto con pantalla TFT y radio WiFi), el firmware **Bruce** (sistema operativo ofensivo para hardware ESP32 con soporte nativo de Evil Portal, Deauth y captura de credenciales en `/creds`), y portales HTML personalizados diseñados para suplantar redes reales. Los portales fueron desplegados en entornos físicos reales pasillos universitarios, eventos académicos y laboratorios de cómputo sin infraestructura cloud de ningún tipo.
 
 El dato más destacado del proyecto: **más de 100 credenciales capturadas** a lo largo de tres campañas distintas, con una tasa de interacción promedio superior al 60% en redes con nombres de confianza conocidos por los usuarios objetivo.
 
@@ -27,13 +26,13 @@ El dato más destacado del proyecto: **más de 100 credenciales capturadas** a l
 |---|---|
 | Hardware principal | M5Stack (ESP32) con pantalla TFT 1.14" |
 | Firmware | Bruce Evil Portal (versión de campo) |
-| Tipo de entorno | 100% físico / local — sin cloud |
+| Tipo de entorno | 100% físico / local  |
 | IP del servidor HTTP | `172.0.0.1` |
 | Endpoint de captura | `172.0.0.1/creds` y `172.0.0.1/ssid` |
 | Protocolo HTTP | GET (query string), sin method declarado en form |
 | Campos capturados | `email` + `password` |
-| Rango de operación | ~15–30 metros en espacios abiertos |
-| Duración total | Enero 2023 – Junio 2024 (~1.5 años) |
+| Rango de operación | 15–30 metros en espacios abiertos |
+| Duración total | Junio 2024 – Marzo 2026 (1.5 años) |
 | Costo de infraestructura | $0 (hardware preexistente) |
 | Deauth | Desactivado (modo pasivo) |
 
