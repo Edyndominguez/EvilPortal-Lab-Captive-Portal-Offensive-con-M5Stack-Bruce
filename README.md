@@ -83,15 +83,7 @@ Como objetivos específicos, el proyecto buscó dominar el ciclo completo de un 
 
 Las capturas documentan el flujo completo del ataque: desde la pantalla del dispositivo M5Stack con las credenciales capturadas en tiempo real, hasta la perspectiva de la víctima en su teléfono el listado de redes disponibles con el AP malicioso visible, el captive portal automático disparado por Android, y la página de phishing renderizada.
 
-> ![M5Stack Bruce - Evil Portal activo con credenciales capturadas](screenshots/m5stack_evil_portal_creds.png)
-
-> ![Lista de redes WiFi - AP malicioso visible como "Digital"](screenshots/wifi_list_victim_android.png)
-
-> ![Captive portal automático Android - Google phishing](screenshots/captive_portal_google_phish.png)
-
-> ![Portal Google phishing - credenciales ingresadas](screenshots/google_phish_credentials_filled.png)
-
-> ![Portal NODO-WIFI - diseño ficticio de conferencia](screenshots/nodo_wifi_portal_preview.png)
+> ![GIF portal](screenshots%20Portal/GIF%20portal.gif)
 
 ---
 # 🧩 Documentación Técnica de Portales
@@ -214,7 +206,8 @@ Resultado  : Credenciales institucionales reales capturadas
 Ejemplo    : ema: Hola@itse.ac.pa | pas: hoal
 ```
 
-> ![Portal ITSE clone en dispositivo víctima](screenshots/itse_portal_victim_view.png)
+> ![Portal ITSE clone](screenshots%20Portal/Portal%20ITSE%20clone.jpeg)
+> ![Portal ITSE clone 2](screenshots%20Portal/Portal%20ITSE%20clone%202.jpeg)
 
 ---
 
@@ -230,8 +223,9 @@ Campos     : name="email" | name="password"
 Endpoint   : 172.0.0.1/creds
 Resultado  : Validación técnica del formato Bruce — funcional al 100%
 ```
+ ![Portal NODO-WIFI](screenshots%20Portal/NODO-WIFI%20.jpeg)
+>  ![Portal NODO-WIFI](screenshots%20Portal/NODO-WIFI%202.jpeg)
 
-> ![Portal NODO-WIFI ficticio](screenshots/nodo_wifi_portal_preview.png)
 
 ---
 
@@ -249,8 +243,10 @@ Resultado  : Credenciales Google reales capturadas
 Nota       : Android dispara captive portal automáticamente al conectarse
 ```
 
-> ![Google phishing - pantalla vacía post-submit](screenshots/captive_portal_google_phish.png)
-> ![Google phishing - credenciales en campo](screenshots/google_phish_credentials_filled.png)
+> ![Google ](screenshots%20Portal//wifi_list_victim_android.jpeg)
+> ![Google](screenshots%20Portal/captive_portal_google.jpeg)
+> ![Google phishing credenciales](screenshots%20Portal/google_credentials.jpeg)
+> ![Google](screenshots%20Portal/evil_portal.jpeg)
 
 ---
 
@@ -311,7 +307,7 @@ Este repositorio documenta un laboratorio de ciberseguridad ofensiva realizado c
 
 ---
 
-## 👤 Autores
+## 👤 Autor
 
 **Edyn Dominguez** — Estudiante de  Ciberseguridad, Instituto Técnico Superior Especializado (ITSE). Proyecto de laboratorio personal desarrollado entre julio 2024 y marzo del 2026 como exploración práctica del vector de ataque Evil Portal / Captive Portal Phishing sobre hardware embebido.
 
