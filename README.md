@@ -205,9 +205,10 @@ Endpoint   : 172.0.0.1/creds
 Resultado  : Credenciales institucionales reales capturadas
 Ejemplo    : ema: Hola@itse.ac.pa | pas: hoal
 ```
-
-> ![Portal ITSE clone](screenshots%20Portal/Portal%20ITSE%20clone.jpeg)
-> ![Portal ITSE clone 2](screenshots%20Portal/Portal%20ITSE%20clone%202.jpeg)
+> <p align="center">
+  <img src="screenshots%20Portal/Portal%20ITSE%20clone.jpeg" width="45%"/>
+  <img src="screenshots%20Portal/Portal%20ITSE%20clone%202.jpeg" width="45%"/>
+</p>
 
 ---
 
@@ -223,8 +224,10 @@ Campos     : name="email" | name="password"
 Endpoint   : 172.0.0.1/creds
 Resultado  : Validación técnica del formato Bruce — funcional al 100%
 ```
- ![Portal NODO-WIFI](screenshots%20Portal/NODO-WIFI%20.jpeg)
->  ![Portal NODO-WIFI](screenshots%20Portal/NODO-WIFI%202.jpeg)
+<p align="center">
+  <img src="screenshots%20Portal/NODO-WIFI%20.jpeg" width="45%"/>
+  <img src="screenshots%20Portal/NODO-WIFI%202.jpeg" width="45%"/>
+</p>
 
 
 ---
@@ -243,10 +246,14 @@ Resultado  : Credenciales Google reales capturadas
 Nota       : Android dispara captive portal automáticamente al conectarse
 ```
 
-> ![Google ](screenshots%20Portal//wifi_list_victim_android.jpeg)
-> ![Google](screenshots%20Portal/captive_portal_google.jpeg)
-> ![Google phishing credenciales](screenshots%20Portal/google_credentials.jpeg)
-> ![Google](screenshots%20Portal/evil_portal.jpeg)
+<p align="center">
+  <img src="screenshots%20Portal/captive_portal_google.jpeg" width="45%"/>
+  <img src="screenshots%20Portal/google_credentials.jpeg" width="45%"/>
+</p>
+<p align="center">
+  <img src="screenshots%20Portal/wifi_list_victim_android.jpeg" width="45%"/>
+  <img src="screenshots%20Portal/evil_portal.jpeg" width="45%"/>
+</p>
 
 ---
 
